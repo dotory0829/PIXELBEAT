@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Logo from "@/assets/images/Logo.png";
-import ArrowDown from "@/assets/svgs/ArrowDown.svg?react";
 import MoreIcon from "@/assets/svgs/MoreIcon.svg?react";
+import ArrowDown from "@/assets/svgs/ArrowDown.svg?react";
 
 interface HeaderProps {
 	onClickLeftButton?: () => void;
