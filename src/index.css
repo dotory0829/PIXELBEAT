@@ -1,0 +1,361 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'DungGeunMo';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'NeoDunggeunmoPro-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/NeoDunggeunmoPro-Regular.woff2')
+    format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@layer base {
+  html,
+  body {
+    font-family: 'NeoDunggeunmoPro-Regular', 'DungGeunMo', 'AppleSDGothicNeo',
+      'Noto Sans KR', sans-serif;
+    font-size: 16px;
+    background-color: black;
+    color: white;
+    @media screen and (min-width: 720px) {
+      font-size: 22px;
+    }
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+  }
+}
+
+.a11y-hidden {
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+}
+
+.top-track-grid {
+  @apply grid grid-flow-col grid-rows-4 gap-y-10 gap-x-10  overflow-x-scroll;
+}
+
+/* MYMUSIC */
+.musicListGreen {
+  background: url(./assets/images/musicListGreen.png);
+}
+.musicList {
+  background: url(./assets/images/musicList.png);
+}
+
+
+/* common Layout */
+@layer components {
+  .layout-screen-width {
+    @apply mx-auto h-[100svh] overflow-y-auto;
+
+    @screen mobile {
+      width: theme('screens.mobile');
+      max-width: theme('screens.mobile');
+    }
+
+    @screen desktop {
+      width: theme('screens.desktop');
+      max-width: theme('screens.desktop');
+    }
+  }
+
+  .genre-selector-container {
+    @apply grid grid-cols-3 gap-x-10 gap-y-16 desktop:p-20;
+  }
+
+  .genre-icon-size {
+    @apply w-50 h-50;
+
+    @screen mobile {
+      width: 60px;
+      height: 60px;
+    }
+
+    @screen desktop {
+      width: 90px;
+      height: 90px;
+    }
+  }
+  
+  .genre-icon-position {
+    @apply absolute left-[50%] translate-x-[-50%];
+    position: absolute;
+    top: 30px;
+
+    @screen mobile {
+      top: 30px;
+    }
+
+    @screen desktop {
+      position: absolute;
+      top: 40px;
+    }
+  }
+
+  .genre-text-size {
+    @apply absolute left-[50%] translate-x-[-50%] whitespace-nowrap bottom-4;
+
+    font-size: 16px;
+
+    @screen mobile {
+      bottom: 15px;
+    }
+
+    @screen desktop {
+      font-size: 28px;
+      bottom: 20px;
+    }
+  }
+ 
+}
+
+/* TEXT FLOW */
+.text-flow-on-hover {
+  white-space: nowrap;
+}
+.group:hover .text-flow-on-hover {
+  animation: textFlow 5s linear infinite;
+}
+.text-flow-on-hover:hover {
+  animation: textFlow 5s linear infinite;
+}
+
+@keyframes textFlow {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+
+/* Bill BACKGROUND */
+.bill-background-side:before,
+.bill-background-side:after {
+  display: block;
+  content: '';
+  position: relative;
+  width: 100%;
+  background: url('./assets/images/billBackground.png') center / contain;
+  height: 16px;
+}
+.bill-background-side:before {
+  top: -15px;
+  height: 16px;
+}
+.bill-background-side:after {
+  bottom: -15px;
+  transform: rotate(180deg);
+}
+
+
+/* WARRPER BACKGROUND & TOPBAR */
+.topbar {
+  background: url('./assets/images/topBar.png') center / 724px no-repeat;
+  height: 22.5px;
+  z-index: 9999;
+}
+
+@keyframes textLoop {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0%, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+.screen-bg {
+  background: url('./assets/images/screenBgGreen.png') -10% top / 50% repeat;
+  background-size: 100% 340px;
+  height: 100svh;
+  width: 100vw;
+  flex: 0 0 auto;
+  animation: textLoop 12s linear infinite;
+}
+
+.flow-wrap {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+
+/* PORTAL */
+@keyframes fadeOut {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100svh);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: translateY(100svh);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.open {
+  animation: fadeIn 0.3s ease-in;
+}
+
+.closing {
+  animation: fadeOut 0.4s ease-in;
+}
+
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOutOpacity {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.portal-background {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.portal-background-open {
+  animation: fadeInOpacity 0.3s ease-in;
+}
+
+.portal-background-closing {
+  animation: fadeOutOpacity 0.4s ease-in;
+}
+
+
+
+
+/* PLAYER */
+.progressbar {
+  appearance: none;
+  -webkit-appearance: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 3px;
+  background: transparent;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.progressbar:active {
+  cursor: grabbing;
+}
+
+.progressbar::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 13px;
+  height: 13px;
+  background: transparent;
+  cursor: pointer;
+}
+
+@keyframes fadeOutFullScreen {
+  0% {
+    left: 50%;
+    transform: translateY(0) translateX(-50%);
+  }
+  100% {
+    left: 50%;
+    transform: translateY(100svh) translateX(-50%);
+  }
+}
+
+@keyframes fadeInFullScreen {
+  0% {
+    left: 50%;
+    transform: translateY(100svh) translateX(-50%);
+  }
+  100% {
+    left: 50%;
+    transform: translateY(0) translateX(-50%);
+  }
+}
+
+.open-fullScreen {
+  animation: fadeInFullScreen 0.3s ease-in;
+}
+
+.closing-fullScreen {
+  animation: fadeOutFullScreen 0.3s ease-in;
+}
+
+.playnowCircle {
+  @apply w-full fixed flex flex-col justify-between items-center px-13  bottom-12 gap-20 py-20;
+
+  /* background-color: theme(colors.mainRed); */
+  background: url('./assets/images/playerFullScreenButtonBackground.png')
+    theme(colors.mainBlack) center / 200px no-repeat;
+
+    @screen mobile {
+      background-size: 226px;
+      bottom: 20px;
+      gap: 32px;
+    }
+  
+    @screen desktop {
+      background-size: 226px;
+      bottom: 20px;
+      gap: 32px;
+    }
+}
+
+.playnowBtn {
+  @apply w-36 hover:text-mainGreen cursor-pointer;
+}
+
+@keyframes animateBill {
+  0% {
+    transform:translate3d(-50%,-80%,0);
+  }
+  100% {
+    transform:translate3d(-50%,0,0);
+  }
+}
+
+.making-bill-animate{
+  animation: animateBill 0.6s ease-out;
+}
+
