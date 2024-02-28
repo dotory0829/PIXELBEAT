@@ -103,8 +103,8 @@ const MainMetaTag = () => {
 				content="mstile-310x310.png"
 			/>
 
-			<meta name="og:url" content={"https://pixel-beat-alpha.vercel.app/"} />
-			<link rel="canonical" href={"https://pixel-beat-alpha.vercel.app/"} />
+			<meta name="og:url" content={"https://pixelbeat.vercel.app/"} />
+			<link rel="canonical" href={"https://pixelbeat.vercel.app/"} />
 
 			<meta
 				name="description"
