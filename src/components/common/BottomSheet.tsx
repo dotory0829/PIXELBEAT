@@ -9,8 +9,8 @@ const BottomSheet = ({ onClick }: { onClick?: any }) => {
 
 	// modalType === 'myBillList'일 때 쥬스탠드에서 관리하고 있는  내 ownplaylist들고오기
 	//ownplaylist에 저장할때 id랑 이름 객체 배열로 저장하기
-	if (modalType === "myBillList") {
-	}
+	// if (modalType === "myBillList") {
+	// }
 
 	if (!isVisible) return null;
 

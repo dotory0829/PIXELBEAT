@@ -21,14 +21,16 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ LazyComponent }) => {
 		if (!loggedInUser.id) {
 			openConfirm("LOGIN_GUIDE");
 		}
-	}, [isShow]);
+	}, []);
 
 	const handleNavigateHome = () => {
+		console.log("닫기1");
 		closeConfirm();
 		navigate("/home");
 	};
 
 	const handleNavigateEntry = () => {
+		console.log("닫기2");
 		closeConfirm();
 		navigate("/entry");
 	};
