@@ -24,13 +24,11 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ LazyComponent }) => {
 	}, []);
 
 	const handleNavigateHome = () => {
-		console.log("닫기1");
 		closeConfirm();
 		navigate("/home");
 	};
 
 	const handleNavigateEntry = () => {
-		console.log("닫기2");
 		closeConfirm();
 		navigate("/entry");
 	};
