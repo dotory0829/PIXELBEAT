@@ -63,7 +63,7 @@ const MusicPlayerFullScreen = ({
 		<div
 			className={`${
 				isShow ? "open-fullScreen" : "closing-fullScreen"
-			} absolute left-[50%] top-0 h-[calc(100svh-10px)] w-390 translate-x-[-50%] bg-mainBlack pt-10 desktop:w-[720px] desktop:pt-30`}
+			} absolute left-[50%] top-0 h-[calc(100svh)] w-390 translate-x-[-50%] bg-mainBlack pt-10 desktop:w-[720px] desktop:pt-30`}
 		>
 			<Header type="musicPlayerFullScreen" onClickRightButton={closeModal} />
 

@@ -2,6 +2,7 @@ import CONFIRM_TYPE, { type ConfirmType } from "@/constants/confirmText";
 import useConfirm from "@/hooks/useConfirm";
 import { SmallButton } from "..";
 import { useNavigate } from "react-router-dom";
+import useUserStore from "@/zustand/userStore";
 
 const BUTTON_STYLE = `relative 
     desktop:w-120 desktop:h-40 desktop:text-16 
@@ -16,6 +17,7 @@ interface ConfirmModalProps {
 const ConfirmModal = ({ onConfirmClick, onCancelClick }: ConfirmModalProps) => {
 	const { closeConfirm, confirmType } = useConfirm();
 	const navigate = useNavigate();
+	const loggedInUser = useUserStore((state) => state.userInfo).id;
 
 	const handleConfirm = () => {
 		if (confirmType === "LOGIN_GUIDE") {
@@ -40,7 +42,9 @@ const ConfirmModal = ({ onConfirmClick, onCancelClick }: ConfirmModalProps) => {
 	return (
 		<div
 			className="portal-background left-2/1 translate-x-2/1 fixed top-0 flex h-[100svh] w-full items-center justify-center"
-			onClick={closeConfirm}
+			onClick={() => {
+				loggedInUser && closeConfirm();
+			}}
 		>
 			<div className="flex items-center justify-center border-2 border-mainBlack bg-mainWhite p-4">
 				<div className="relative flex flex-col items-center justify-center border-4 border-mainBlack px-48 py-32 desktop:h-220 desktop:w-440">
