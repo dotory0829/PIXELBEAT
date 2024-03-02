@@ -43,13 +43,16 @@ const ArtistSelector = () => {
 		enabled: !!genreStore,
 	});
 
-	/** b - 위에서 가져온 가수 id로 실제 데이터 가져오기 */
+	/** b - 위에서 가져온 가수 id로 실제 데이터 가져오기
+	 * 단, supabase에서 잠수함 패치릃 한것인지 기존에는 맥시멈 ids가 100이나 50개 이상이면
+	 * 에러가 발생하여 slice로 50개까지 잘라주었음
+	 */
 	const {
 		data: artistInfoBySpotify,
 		isLoading: isArtistIdsfromSupabaseLoading,
 	} = useQuery({
-		queryKey: ["detailData", selectedArtistIds],
-		queryFn: () => getArtistInfo(selectedArtistIds),
+		queryKey: ["detailData", selectedArtistIds?.slice(0, 50)],
+		queryFn: () => getArtistInfo(selectedArtistIds?.slice(0, 50)),
 		enabled: !!selectedArtistIds,
 	});
 
